@@ -18,10 +18,10 @@ const fadeUp = {
 const palette = ["#220909", "#4b1f2c", "#7d001c", "#9e243f", "#efe4d9"];
 
 const dayPlan = [
-  { time: "15:30", label: "сбор гостей", side: "left" },
-  { time: "16:00", label: "церемония", side: "right" },
-  { time: "17:00", label: "банкет", side: "left" },
-  { time: "22:00", label: "торт", side: "right" },
+  { time: "16:00", label: "сбор гостей", side: "left" },
+  { time: "17:00", label: "банкет", side: "right" },
+  { time: "22:00", label: "торт", side: "left" },
+  { time: "00:00", label: "салют", side: "right" },
 ];
 
 function PlanItem({ time, label, align }) {
@@ -85,7 +85,7 @@ function calculateTimeLeft(target) {
 }
 
 function buildAugust2026Cells() {
-  const offset = 5; // 1 августа 2026 — суббота
+  const offset = 7; // 1 августа 2026 — суббота
 
   const cells = [];
 
@@ -406,7 +406,7 @@ ${data.favoriteSong}
           className="mx-auto w-full max-w-[20rem] text-[#64001b]"
         >
           <p className="font-script text-[1.2rem] leading-tight -rotate-6">
-            план нашего дня
+            План нашего дня
           </p>
 
           <div className="relative mt-10">
