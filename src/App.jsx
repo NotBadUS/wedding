@@ -156,21 +156,23 @@ export default function App() {
   const calendarCells = buildJune2026Cells();
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const firstName = formData.get("firstName")?.toString().trim() ?? "";
-    const lastName = formData.get("lastName")?.toString().trim() ?? "";
+  e.preventDefault();
 
-    const data = {
-      fullname: `${firstName} ${lastName}`.trim(),
-      attendance: formData.get("attendance"),
-      plusOne: formData.get("plusOne"),
-      kids: formData.get("kids"),
-      drinks: formData.get("drinks") || "—",
-      favoriteSong: formData.get("favoriteSong") || "—",
-    };
+  const formData = new FormData(e.target);
 
-    const message = `
+  const firstName = formData.get("firstName")?.toString().trim() ?? "";
+  const lastName = formData.get("lastName")?.toString().trim() ?? "";
+
+  const data = {
+    fullname: `${firstName} ${lastName}`.trim(),
+    attendance: formData.get("attendance"),
+    plusOne: formData.get("plusOne"),
+    kids: formData.get("kids"),
+    drinks: formData.get("drinks") || "—",
+    favoriteSong: formData.get("favoriteSong") || "—",
+  };
+
+  const message = `
 💍 Новая анкета
 
 👤 Гость: ${data.fullname}
@@ -179,38 +181,39 @@ export default function App() {
 ❤️ Пара: ${data.plusOne}
 👶 Дети: ${data.kids}
 
-🍷 Напитки: ${data.drinks}
+🍷 Напитки:
+${data.drinks}
 
 🎵 Песня:
 ${data.favoriteSong}
-    `;
+  `;
 
-    setSending(true);
-    try {
-      const response = await fetch(
-        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
-            text: message,
-          }),
-        }
-      );
+  setSending(true);
 
-      if (!response.ok) {
-        throw new Error("Telegram API error");
-      }
+  try {
+    const response = await fetch("/api/sendTelegram", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message }),
+    });
 
-      alert("Анкета отправлена ❤️");
-      e.target.reset();
-    } catch {
-      alert("Ошибка отправки");
-    } finally {
-      setSending(false);
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Ошибка отправки");
     }
-  };
+
+    alert("Анкета отправлена ❤️");
+    e.target.reset();
+  } catch (error) {
+    console.error(error);
+    alert("Ошибка отправки");
+  } finally {
+    setSending(false);
+  }
+};
 
   useEffect(() => {
     const timer = setInterval(() => {
