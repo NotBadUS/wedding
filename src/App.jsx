@@ -85,7 +85,7 @@ function calculateTimeLeft(target) {
 }
 
 function buildAugust2026Cells() {
-  const offset = 7; // 1 августа 2026 — суббота
+  const offset = 5; // 1 августа 2026 — суббота
 
   const cells = [];
 
@@ -348,7 +348,7 @@ ${data.favoriteSong}
                   {day ? (
                     <span
                       className={`font-title text-[1.05rem] ${
-                        day === 6
+                        day === 7
                           ? "flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#64001b]"
                           : ""
                       }`}
