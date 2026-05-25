@@ -84,12 +84,23 @@ function calculateTimeLeft(target) {
   };
 }
 
-function buildJune2026Cells() {
-  const offset = 0; // 1 июня 2026 — понедельник
+function buildAugust2026Cells() {
+  const offset = 5; // 1 августа 2026 — суббота
+
   const cells = [];
-  for (let i = 0; i < offset; i++) cells.push(null);
-  for (let d = 1; d <= 30; d++) cells.push(d);
-  while (cells.length % 7 !== 0) cells.push(null);
+
+  for (let i = 0; i < offset; i++) {
+    cells.push(null);
+  }
+
+  for (let d = 1; d <= 31; d++) {
+    cells.push(d);
+  }
+
+  while (cells.length % 7 !== 0) {
+    cells.push(null);
+  }
+
   return cells;
 }
 
@@ -148,12 +159,12 @@ function Section({ children, className = "", style }) {
 }
 
 export default function App() {
-  const weddingDate = new Date("2026-06-06T16:00:00");
+  const weddingDate = new Date("2026-08-07T16:00:00");
   const [timeLeft, setTimeLeft] = useState(() =>
     calculateTimeLeft(weddingDate)
   );
   const [sending, setSending] = useState(false);
-  const calendarCells = buildJune2026Cells();
+  const calendarCells = buildAugust2026Cells();
 
   const handleFormSubmit = async (e) => {
   e.preventDefault();
@@ -317,10 +328,10 @@ ${data.favoriteSong}
 
           <TapedCard className="mx-auto mt-10 max-w-[17.5rem] px-5 pb-6 pt-8 text-[#64001b]">
             <p className="font-script text-center text-[2.4rem] leading-none rotate-[-2deg]">
-              06.06.2026
+              07.08.2026
             </p>
             <h2 className="font-script mt-5 text-center text-[2.2rem] leading-none rotate-[-1deg]">
-              июнь
+              август
             </h2>
 
             <div className="mt-6 grid grid-cols-7 gap-y-2 gap-x-1 text-center">
