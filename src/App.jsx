@@ -17,17 +17,50 @@ const fadeUp = {
 const palette = ["#1A1A1A", "#3B241A", "#6B4A3A", "#D6C2B2", "#F5F1EB"];
 
 const dayPlan = [
-  { time: "15:00", label: "сбор гостей", side: "left" },
-  { time: "16:00", label: "банкет", side: "right" },
-  { time: "21:00", label: "торт", side: "left" },
-  { time: "23:00", label: "салют", side: "right" },
+  {
+    time: "15:00",
+    title: "сбор гостей",
+    subtitle: "(welcome зона)",
+    side: "left",
+  },
+
+  {
+    time: "16:00",
+    title: "банкет",
+    side: "right",
+  },
+
+  {
+    time: "21:00",
+    title: "торт",
+    side: "left",
+  },
+
+  {
+    time: "23:00",
+    title: "салют",
+    side: "right",
+  },
 ];
 
-function PlanItem({ time, label, align }) {
+function PlanItem({ time, title, subtitle, align }) {
   return (
     <div className={align === "right" ? "text-right" : "text-left"}>
-      <p className="font-script text-[2.1rem] leading-none">{time}</p>
-      <p className="font-hand mt-0.5 text-[1.05rem] leading-tight">{label}</p>
+      <p className="font-script text-[2.1rem] leading-none">
+        {time}
+      </p>
+
+      <div className="mt-1">
+        <p className="font-hand text-[1.05rem] leading-tight">
+          {title}
+        </p>
+
+        {subtitle && (
+          <p className="font-hand text-[0.9rem] opacity-70 leading-tight">
+            {subtitle}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -461,20 +494,22 @@ ${data.favoriteSong}
                   <div className="w-[42%] pr-4">
                     {item.side === "left" && (
                       <PlanItem
-                        time={item.time}
-                        label={item.label}
-                        align="right"
-                      />
+  time={item.time}
+  title={item.title}
+  subtitle={item.subtitle}
+  align="right"
+/>
                     )}
                   </div>
                   <div className="w-[16%]" aria-hidden="true" />
                   <div className="w-[42%] pl-4">
                     {item.side === "right" && (
                       <PlanItem
-                        time={item.time}
-                        label={item.label}
-                        align="left"
-                      />
+  time={item.time}
+  title={item.title}
+  subtitle={item.subtitle}
+  align="left"
+/>
                     )}
                   </div>
                 </div>
@@ -551,8 +586,10 @@ ${data.favoriteSong}
 
           </div>
 <p className="font-hand mt-10 text-[1.2rem] leading-7 text-[#64001b] text-center">
-  Каждый год на годовщину свадьбы мы будем вспоминать вас ❤️
-</p>
+Каждый год на годовщину свадьбы
+<br />
+  мы будем вспоминать вас ❤️</p>
+
         </motion.div>
       </Section>
 

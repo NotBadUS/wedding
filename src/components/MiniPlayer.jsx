@@ -79,6 +79,36 @@ const hasFadedIn = useRef(false);
 
   return (
     <div className="fixed bottom-5 right-5 z-50">
+{!hasStartedOnce && (
+  <>
+    {/* стрелка */}
+    <div className="fixed bottom-12 right-17 z-40 pointer-events-none">
+      <svg width="120" height="90" viewBox="0 0 120 90" fill="none">
+        <path
+          d="M30 15 C25 10, 35 20, 45 35 C55 50, 65 55, 75 55"
+          stroke="#64001b"
+          strokeWidth="2"
+          strokeDasharray="5 5"
+          fill="none"
+        />
+        <path
+          d="M70 50 L78 55 L70 60"
+          stroke="#64001b"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+
+    {/* текст */}
+    <div className="fixed bottom-34 right-20 z-50 flex items-end gap-2">
+      <div className="bg-[#64001b] text-[#f4efe6] px-3 py-1 rounded-full font-hand text-[0.95rem] rotate-[-6deg] shadow-lg whitespace-nowrap animate-pulse">
+        Нажми на пластинку ♫
+      </div>
+    </div>
+  </>
+)}
       <div
   onClick={toggle}
   className={`relative w-20 h-20 rounded-full cursor-pointer
