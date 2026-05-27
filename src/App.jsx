@@ -371,7 +371,7 @@ ${data.favoriteSong}
         </motion.div>
       </Section>
 
-      {/* ——— ЛОКАЦИЯ ——— */}
+       {/* ——— ЛОКАЦИЯ ——— */}
       <Section style={{ background: BURGUNDY }} className="py-20 text-white">
         <motion.div
           variants={fadeUp}
@@ -383,7 +383,7 @@ ${data.favoriteSong}
           <h2 className="font-script text-[2.8rem] rotate-[-2deg]">Локация</h2>
           <TapedCard className="mt-8 overflow-hidden p-2 rotate-[-1deg]">
             <iframe
-              src="https://yandex.ru/map-widget/v1/?ll=43.963093%2C56.323902&mode=search&oid=1062980326&ol=biz&z=17"
+              src="https://yandex.ru/map-widget/v1/?l=map&ll=45.022313%2C55.228639&z=17&pt=45.022313%2C55.228639%2Cpm2rdm"
               width="100%"
               height="280"
               frameBorder="0"
@@ -393,9 +393,9 @@ ${data.favoriteSong}
             />
           </TapedCard>
           <p className="font-hand mt-8 text-[1.2rem] leading-8">
-            Шатер "Судак"
+            Ресторан «Агат»
             <br />
-            Нижегородская область, Богородский муниципальный округ, сельский поселок Окский, Береговая улица, 1
+            с. Гагино, ул. Терехина, 3
           </p>
         </motion.div>
       </Section>
