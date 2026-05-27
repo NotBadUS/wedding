@@ -17,15 +17,10 @@ const fadeUp = {
 const palette = ["#1A1A1A", "#3B241A", "#6B4A3A", "#D6C2B2", "#F5F1EB"];
 
 const dayPlan = [
-<<<<<<< HEAD
   { time: "15:00", label: "сбор гостей", side: "left" },
   { time: "16:00", label: "банкет", side: "right" },
   { time: "21:00", label: "торт", side: "left" },
   { time: "23:00", label: "салют", side: "right" },
-=======
-  { time: "15:30", label: "сбор гостей", side: "left" },
-  { time: "16:00", label: "банкет", side: "right" },
->>>>>>> 280f679e957dc65a47062d32c09dc1f37989f9fe
 ];
 
 function PlanItem({ time, label, align }) {
@@ -516,12 +511,7 @@ ${data.favoriteSong}
               ))}
             </div>
           </TapedCard>
-
-<<<<<<< HEAD
-                  </motion.div>
-=======
         </motion.div>
->>>>>>> 280f679e957dc65a47062d32c09dc1f37989f9fe
       </Section>
 
       {/* ——— ПОЖЕЛАНИЯ ——— */}
