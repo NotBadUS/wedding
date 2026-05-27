@@ -112,3 +112,19 @@ body {
   outline: 2px solid var(--burgundy);
   outline-offset: 2px;
 }
+
+/* ===== VINYL PLAYER ===== */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 6s linear infinite;
+  box-shadow: 0 0 12px rgba(100, 0, 27, 0.25);
+}

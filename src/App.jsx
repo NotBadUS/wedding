@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import MiniPlayer from "./components/MiniPlayer";
 
 const CREAM = "#f4efe6";
 const BURGUNDY = "#64001b";
-const TELEGRAM_BOT_TOKEN = "8611552832:AAF-tHBJZNW07GitC9KLfhsWGZa1h7GsCNs";
-const TELEGRAM_CHAT_ID = "276030097";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -15,13 +14,13 @@ const fadeUp = {
   },
 };
 
-const palette = ["#220909", "#4b1f2c", "#7d001c", "#9e243f", "#efe4d9"];
+const palette = ["#1A1A1A", "#3B241A", "#6B4A3A", "#D6C2B2", "#F5F1EB"];
 
 const dayPlan = [
-  { time: "16:00", label: "сбор гостей", side: "left" },
-  { time: "17:00", label: "банкет", side: "right" },
-  { time: "22:00", label: "торт", side: "left" },
-  { time: "00:00", label: "салют", side: "right" },
+  { time: "15:00", label: "сбор гостей", side: "left" },
+  { time: "16:00", label: "банкет", side: "right" },
+  { time: "21:00", label: "торт", side: "left" },
+  { time: "23:00", label: "салют", side: "right" },
 ];
 
 function PlanItem({ time, label, align }) {
@@ -249,7 +248,7 @@ ${data.favoriteSong}
             fill="none"
           />
           <path
-            d="M248 78c-14-14-34 1-14 14l14 14 14-14c19-13-1-28-14-14z"
+            d="M248 95c-14-14-34 1-14 14l14 14 14-14c19-13-1-28-14-14z"
             fill={BURGUNDY}
             className="heart-pulse"
           />
@@ -364,6 +363,11 @@ ${data.favoriteSong}
               сохраните дату
             </p>
           </TapedCard>
+
+<div className="mt-6 text-center font-hand text-[1.1rem] text-[#64001b] leading-7 rotate-[-1deg]">
+  <p>В этот день 4 года назад</p>
+  <p>мы стали чем-то большим, чем друзья</p>
+</div>
         </motion.div>
       </Section>
 
@@ -398,13 +402,32 @@ ${data.favoriteSong}
 
       {/* ——— ПЛАН ДНЯ ——— */}
       <Section className="border-b border-[#64001b]/10 py-16">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mx-auto w-full max-w-[20rem] text-[#64001b]"
+
+        <div className="relative">
+  
+  {/* фото справа сверху */}
+  <img
+    src="/photos/plan-top.jpg"
+    alt="plan top"
+    className="absolute right-0 -top-10 w-24 rotate-6 rounded-md shadow-lg"
+  />
+
+  {/* фото слева снизу */}
+  <img
+    src="/photos/plan-bottom.jpg"
+    alt="plan bottom"
+    className="absolute left-0 -bottom-10 w-24 -rotate-6 rounded-md shadow-lg"
+  />
+
+  {/* твой существующий контент */}
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    className="mx-auto w-full max-w-[26rem] text-[#64001b]"
         >
+
           <p className="font-script text-[1.2rem] leading-tight -rotate-6">
             План нашего дня
           </p>
@@ -459,6 +482,7 @@ ${data.favoriteSong}
             </div>
           </div>
         </motion.div>
+</div>
       </Section>
 
       {/* ——— ДРЕСС-КОД ——— */}
@@ -488,22 +512,7 @@ ${data.favoriteSong}
             </div>
           </TapedCard>
 
-          <div className="mt-5 grid grid-cols-3 gap-1.5">
-            {[
-              { src: "/photos/look1.jpg", label: "образ 1" },
-              { src: "/photos/look2.jpg", label: "образ 2" },
-              { src: "/photos/look3.jpg", label: "образ 3" },
-            ].map((item) => (
-              <StickerImage
-                key={item.src}
-                src={item.src}
-                alt={item.label}
-                fallbackLabel={item.label}
-                className="h-56 !aspect-auto"
-              />
-            ))}
-          </div>
-        </motion.div>
+                  </motion.div>
       </Section>
 
       {/* ——— ПОЖЕЛАНИЯ ——— */}
@@ -524,16 +533,27 @@ ${data.favoriteSong}
           </p>
 
           <div className="relative mx-auto mt-10 w-40">
-            <Tape className="left-1/2 top-2 -translate-x-1/2 rotate-[-8deg]" />
-            <TransparentImage
-              src="/photos/wine.png"
-              alt="бутылку вина (PNG без фона)"
-              className="mx-auto h-52 w-full rotate-[8deg]"
-            />
-            <p className="font-script absolute -bottom-1 right-0 text-sm rotate-[6deg] text-[#64001b]">
-              вместо цветов
-            </p>
+            {/* БУТЫЛКА (НИЖНИЙ СЛОЙ) */}
+  <TransparentImage
+    src="/photos/wine.png"
+    alt="бутылку вина"
+    className="relative z-10 mx-auto h-52 w-full rotate-[8deg]"
+  />
+
+  {/* СКОТЧ (ВЕРХНИЙ СЛОЙ) */}
+  <div className="absolute left-1/3 top-8 z-20 -translate-x-1/2 rotate-[-8deg]">
+    <Tape />
+  </div>
+
+  {/* ПОДПИСЬ */}
+  <p className="font-script absolute -bottom-1 right-0 z-10 text-sm rotate-[6deg] text-[#64001b]">
+    вместо цветов
+  </p>
+
           </div>
+<p className="font-hand mt-10 text-[1.2rem] leading-7 text-[#64001b] text-center">
+  Каждый год на годовщину свадьбы мы будем вспоминать вас ❤️
+</p>
         </motion.div>
       </Section>
 
@@ -670,6 +690,7 @@ ${data.favoriteSong}
           </p>
         </div>
       </Section>
+<MiniPlayer />
     </div>
   );
 }
