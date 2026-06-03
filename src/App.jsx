@@ -391,16 +391,29 @@ ${data.favoriteSong}
                   className="flex aspect-square items-center justify-center"
                 >
                   {day ? (
-                    <span
-                      className={`font-title text-[1.05rem] ${
-                        day === 7
-                          ? "flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#64001b]"
-                          : ""
-                      }`}
-                    >
-                      {day}
-                    </span>
-                  ) : null}
+  day === 7 ? (
+    <span className="relative flex h-8 w-8 items-center justify-center">
+      <svg
+  viewBox="0 0 24 24"
+  className="absolute h-9 w-9 text-[#64001b] translate-y-[2px]"
+  fill="none"
+  stroke="currentColor"
+  strokeWidth="1.6"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  <path d="M12 21c-4.6-3.2-9-6.7-9-11.2C3 6.5 5.1 4.5 8 4.5c1.8 0 3.3 1 4 2.2 0.7-1.2 2.2-2.2 4-2.2 2.9 0 5 2 5 5.3 0 4.5-4.4 8-9 11.2z" />
+</svg>
+      <span className="relative z-10 font-title text-[1.05rem]">
+        {day}
+      </span>
+    </span>
+  ) : (
+    <span className="font-title text-[1.05rem]">
+      {day}
+    </span>
+  )
+) : null}
                 </div>
               ))}
             </div>
@@ -452,20 +465,20 @@ ${data.favoriteSong}
       {/* ——— ПЛАН ДНЯ ——— */}
       <Section className="border-b border-[#64001b]/10 py-16">
 
-        <div className="relative">
+        <div className="relative py-20">
   
   {/* фото справа сверху */}
   <img
     src="/photos/plan-top.jpg"
     alt="plan top"
-    className="absolute right-0 -top-10 w-24 rotate-6 rounded-md shadow-lg"
+    className="absolute right-0 -top-10 w-32 rotate-6 rounded-md shadow-lg"
   />
 
   {/* фото слева снизу */}
   <img
     src="/photos/plan-bottom.jpg"
     alt="plan bottom"
-    className="absolute left-0 -bottom-10 w-24 -rotate-6 rounded-md shadow-lg"
+    className="absolute left-0 -bottom-10 w-32 -rotate-6 rounded-md shadow-lg"
   />
 
   {/* твой существующий контент */}
@@ -484,7 +497,7 @@ ${data.favoriteSong}
           <div className="relative mt-10">
             <svg
               viewBox="0 0 80 520"
-              className="pointer-events-none absolute left-1/2 top-2 bottom-2 z-0 h-[calc(100%-0.5rem)] w-10 -translate-x-1/2"
+              className="pointer-events-none absolute left-1/2 top-0 bottom-2 z-0 h-[calc(100%-0.5rem)] w-10 -translate-x-1/2"
               preserveAspectRatio="none"
               aria-hidden="true"
             >
@@ -707,7 +720,7 @@ ${data.favoriteSong}
                 <input
                   type="text"
                   name="drinks"
-                  placeholder="Например: красное вино, виски, безалкогольное"
+                  placeholder="Игристое, красное или белое, сухое или полусладкое"
                   className="w-full rounded-md border border-[#64001b]/25 bg-[#faf6f0] px-3 py-2.5 text-[1.1rem] outline-none focus:border-[#64001b]"
                 />
               </label>
