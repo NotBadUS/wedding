@@ -14,18 +14,31 @@ const fadeUp = {
   },
 };
 
-const palette = ["#1A1A1A", "#3B241A", "#6B4A3A", "#D6C2B2", "#F5F1EB"];
+// основная палитра
+const PALETTE = [
+  "#5A3F2E",
+  "#A48A6A",
+  "#D6C8BA",
+  "#E9DAD7",
+  "#B9C6A6",
+];
+
+// дополнительные (мужские / нейтральные)
+const MALE_COLORS = [
+  "#2B1F1A", // мягкий черный
+  "#FAF6F0", // молочный белый
+];
 
 const dayPlan = [
   {
-    time: "15:00",
+    time: "14:00",
     title: "сбор гостей",
     subtitle: "(welcome зона)",
     side: "left",
   },
 
   {
-    time: "16:00",
+    time: "15:00",
     title: "банкет",
     side: "right",
   },
@@ -37,8 +50,8 @@ const dayPlan = [
   },
 
   {
-    time: "23:00",
-    title: "салют",
+    time: "22:00",
+    title: "бенгальские огни",
     side: "right",
   },
 ];
@@ -413,10 +426,10 @@ ${data.favoriteSong}
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="font-script text-[2.8rem] rotate-[-2deg]">Локация</h2>
+          <h2 className="font-script text-[2.8rem] rotate-[-2deg]">Место проведения</h2>
           <TapedCard className="mt-8 overflow-hidden p-2 rotate-[-1deg]">
             <iframe
-              src="https://yandex.ru/map-widget/v1/?l=map&ll=45.022313%2C55.228639&z=17&pt=45.022313%2C55.228639%2Cpm2rdm"
+              src="https://yandex.ru/map-widget/v1/?ll=45.316062%2C55.005749&z=18&pt=45.316062%2C55.005749,pm2rdm"
               width="100%"
               height="280"
               frameBorder="0"
@@ -426,10 +439,13 @@ ${data.favoriteSong}
             />
           </TapedCard>
           <p className="font-hand mt-8 text-[1.2rem] leading-8">
-            Ресторан «Агат»
+            Шатер «Ресторан Болдино»
             <br />
-            с. Гагино, ул. Терехина, 3
+            Нижегородская область, село Большое Болдино, Юбилейная улица, 2А
           </p>
+<p className="font-script mt-6 text-[1.6rem] rotate-[-2deg]">
+  Для гостей будет организован трансфер
+</p>
         </motion.div>
       </Section>
 
@@ -531,20 +547,42 @@ ${data.favoriteSong}
         >
           <h2 className="font-script text-[2.8rem] rotate-[-2deg]">Дресс-Код</h2>
 
-          <TapedCard className="mt-8 px-5 pb-6 pt-9 text-left text-[#64001b]">
+          <TapedCard className="mt-8 px-5 pb-6 pt-9 text-center text-[#64001b]">
             <p className="font-hand text-[1.15rem] leading-7">
-              Мы стараемся сделать праздник красивым и стильным и будем рады,
-              если вы поддержите цветовую гамму нашей свадьбы
+              Для нас самое главное - ваше присутствие!
+<br />
+Но мы будем очень признательны, если вы поддержите цветовую гамму спокойных природных оттенков!
             </p>
-            <div className="mt-7 flex justify-center gap-2.5">
-              {palette.map((color) => (
-                <div
-                  key={color}
-                  className="h-12 w-12 rounded-full border border-[#64001b]/10"
-                  style={{ background: color }}
-                />
-              ))}
-            </div>
+     <div className="mt-7 flex flex-col items-center gap-3">
+
+  {/* основная палитра */}
+  <div className="flex justify-center gap-2.5">
+    {PALETTE.map((color) => (
+      <div
+        key={color}
+        className="h-12 w-12 rounded-full border border-[#64001b]/10"
+        style={{ background: color }}
+      />
+    ))}
+  </div>
+
+  {/* подпись */}
+  <p className="text-center font-hand text-[1rem] text-[#64001b]/70">
+    + цвета для мужчин
+  </p>
+
+  {/* мужские цвета */}
+  <div className="flex justify-center gap-2.5">
+    {MALE_COLORS.map((color) => (
+      <div
+        key={color}
+        className="h-10 w-10 rounded-full border border-[#64001b]/10"
+        style={{ background: color }}
+      />
+    ))}
+  </div>
+
+</div>
           </TapedCard>
         </motion.div>
       </Section>
